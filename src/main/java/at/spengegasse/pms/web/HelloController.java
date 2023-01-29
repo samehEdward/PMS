@@ -16,7 +16,7 @@ public class HelloController
     @RequestMapping("/user_entry")
     public String userForm()
     {
-  return   "<form action=\"/user_greeting\" method=\"POST\">\n" +
+  return   "<form action=\"/greeting/user_greeting\" method=\"POST\">\n" +
             "  <label for=\"fname\">First name:</label><br>\n" +
             "  <input type=\"text\" id=\"fname\" name=\"fname\" value=\"John\"><br>\n" +
             "  <label for=\"lname\">Last name:</label><br>\n" +
@@ -25,5 +25,10 @@ public class HelloController
             "</form> ";
     }
 
+    @RequestMapping(value = "/user_greeting", method = RequestMethod.POST)
+    public String printUserGreeting()
+    {
+        return "form submitted";
+    }
 
 }
