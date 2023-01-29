@@ -1,8 +1,6 @@
 package at.spengegasse.pms.web;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/greeting")
@@ -18,17 +16,25 @@ public class HelloController
     {
   return   "<form action=\"/greeting/user_greeting\" method=\"POST\">\n" +
             "  <label for=\"fname\">First name:</label><br>\n" +
-            "  <input type=\"text\" id=\"fname\" name=\"fname\" value=\"John\"><br>\n" +
+            "  <input type=\"text\" id=\"fname\" name=\"firstname\" value=\"John\"><br>\n" +
             "  <label for=\"lname\">Last name:</label><br>\n" +
-            "  <input type=\"text\" id=\"lname\" name=\"lname\" value=\"Doe\"><br><br>\n" +
+            "  <input type=\"text\" id=\"lname\" name=\"lastname\" value=\"Doe\"><br><br>\n" +
             "  <input type=\"submit\" value=\"Submit\">\n" +
             "</form> ";
     }
 
     @RequestMapping(value = "/user_greeting", method = RequestMethod.POST)
-    public String printUserGreeting()
+    public String printUserGreeting(@RequestParam String firstname,@RequestParam String lastname)
+
     {
-        return "form submitted";
+        return "Hallo there " + firstname + " " + lastname ;
+    }
+
+
+    @RequestMapping(value = "/orders/{id}", method = RequestMethod.GET)
+    public String getOrder(@PathVariable String id)
+    {
+        return "Order ID" + id;
     }
 
 }
