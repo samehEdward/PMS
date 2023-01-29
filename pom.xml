@@ -51,6 +51,16 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>eu.cedarsoft.devtools</groupId>
+            <artifactId>devtools</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.qeagle</groupId>
+            <artifactId>DevTools-Selenium</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 
     <build>
