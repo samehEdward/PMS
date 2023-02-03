@@ -11,7 +11,7 @@
 
   <div class="container">
 
-    <form action="/projects/save" th:object="${project}">
+    <form action="/projects/save" th:object="${project}" method="post">
       <div class="mb-2 mt-3">
       <input type="text" placeholder="Project Name" th:field="${project.name}">
       </div>
