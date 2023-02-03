@@ -13,18 +13,18 @@
 
     <form action="/projects/save" th:object="${project}">
       <div class="mb-2 mt-3">
-      <input type="text" placeholder="Project Name">
+      <input type="text" placeholder="Project Name" th:field="${project.name}">
       </div>
 
       <div class="mb-2">
       <select>
-        <option th:value="NOTSTARTED">Not Started</option>
-        <option th:value="INPROGRESS">In Progress</option>
-        <option th:value="COMPLETED">Completed</option>
+        <option th:value="NOTSTARTED" th:field="${project.stage}">Not Started</option>
+        <option th:value="INPROGRESS" th:field="${project.stage}">In Progress</option>
+        <option th:value="COMPLETED" th:field="${project.stage}">Completed</option>
       </select>
       </div>
       <div class="mb-2">
-      <textarea type = "text" placeholder="Enter Project Description" class="px-4"></textarea>
+      <textarea type = "text" placeholder="Enter Project Description" class="px-4" th:field="${project.description}"></textarea>
     </div>
       <div class="mb-3">
       <button type="submit">Create Project</button>
