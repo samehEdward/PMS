@@ -16,7 +16,7 @@
   <table class="table">
     <thead>
     <tr>
-      <th scope="col">#</th>
+
       <th scope="col">Project Name</th>
       <th scope="col">Project Stage</th>
 
@@ -24,17 +24,10 @@
     </thead>
 
     <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
 
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-
+    <tr th:each="apro : ${prosList}">
+      <td th:text="${apro.name}"></td>
+      <td th:text="${apro.stage}"></td>
     </tr>
 
     </tbody>
