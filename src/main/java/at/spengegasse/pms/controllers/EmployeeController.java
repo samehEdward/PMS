@@ -20,9 +20,9 @@ public class EmployeeController {
     public String displayEmployee(Model model){
 
 
-        Employee employee = new Employee();
+        Employee aemployee = new Employee();
 
-        model.addAttribute("emp", employee);
+        model.addAttribute("emp", aemployee);
         return "new-employee";
     }
 
