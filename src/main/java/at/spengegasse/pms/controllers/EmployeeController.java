@@ -9,12 +9,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/employee")
+@RequestMapping("/employees")
 public class EmployeeController {
 
     @Autowired
     EmployeeRepository emp;
+
+
+    @GetMapping
+    public String displayEmployees(Model model)
+    {
+        List<Employee> empls = emp.findAll();
+        model.addAttribute("emplList", empls);
+        return "employees/list-employees";
+    }
 
     @GetMapping("/new")
     public String displayEmployee(Model model){

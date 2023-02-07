@@ -1,6 +1,7 @@
 package at.spengegasse.pms.controllers;
 
 import at.spengegasse.pms.dao.ProjectRepository;
+import at.spengegasse.pms.entities.Employee;
 import at.spengegasse.pms.entities.Project;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/projects")
 public class ProjectContoller
 {
     @Autowired
     ProjectRepository proRepo;
+
+    @GetMapping
+    public String displayEmployees(Model model)
+    {
+        List<Project> pojs = proRepo.findAll();
+        model.addAttribute("emplList", pojs);
+        return "projects/list-projects";
+    }
 
     @GetMapping("/new")
    public String displayProjectForm(Model model){
