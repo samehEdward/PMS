@@ -24,7 +24,7 @@ public class ProjectContoller
         model.addAttribute("project", proj);
 
 
-        return "new-projects";
+        return "projects/new-projects";
    }
 
    @PostMapping("/save")

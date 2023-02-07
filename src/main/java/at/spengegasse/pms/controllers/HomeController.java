@@ -33,6 +33,6 @@ public class HomeController {
     {
     List<Employee> employees = empl.findAll();
     model.addAttribute("empoList", employees);
-        return "home";
+        return "main/home";
     }
 }
