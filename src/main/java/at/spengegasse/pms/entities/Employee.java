@@ -1,10 +1,7 @@
 package at.spengegasse.pms.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 
 @Entity
@@ -17,6 +14,18 @@ public class Employee {
     private String firstName;
     private String LastName;
     private String email;
+
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project theProject;
+
+    public Project getTheProject() {
+        return theProject;
+    }
+
+    public void setTheProject(Project theProject) {
+        this.theProject = theProject;
+    }
 
     public Employee() {
     }
