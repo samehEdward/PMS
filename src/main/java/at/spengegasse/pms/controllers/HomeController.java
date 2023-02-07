@@ -1,6 +1,8 @@
 package at.spengegasse.pms.controllers;
 
+import at.spengegasse.pms.dao.EmployeeRepository;
 import at.spengegasse.pms.dao.ProjectRepository;
+import at.spengegasse.pms.entities.Employee;
 import at.spengegasse.pms.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,11 +17,22 @@ public class HomeController {
     @Autowired
     ProjectRepository repos;
 
-    @GetMapping("/")
+    @GetMapping("/n")
     public String displayHome(Model model)
     {
      List<Project> projects =  repos.findAll();
      model.addAttribute("prosList", projects);
-        return "Home";
+        return "home";
+    }
+
+    @Autowired
+    EmployeeRepository empl;
+
+    @GetMapping("/")
+    public String displayEmployee(Model model)
+    {
+    List<Employee> employees = empl.findAll();
+    model.addAttribute("empoList", employees);
+        return "home";
     }
 }
