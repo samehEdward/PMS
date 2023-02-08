@@ -1,5 +1,6 @@
 package at.spengegasse.pms.controllers;
 
+import at.spengegasse.pms.dao.EmployeeRepository;
 import at.spengegasse.pms.dao.ProjectRepository;
 import at.spengegasse.pms.entities.Employee;
 import at.spengegasse.pms.entities.Project;
@@ -20,6 +21,9 @@ public class ProjectContoller
     @Autowired
     ProjectRepository proRepo;
 
+    @Autowired
+    EmployeeRepository empRepo;
+
     @GetMapping
     public String displayEmployees(Model model)
     {
@@ -30,6 +34,9 @@ public class ProjectContoller
 
     @GetMapping("/new")
    public String displayProjectForm(Model model){
+
+        List<Employee> employees = empRepo.findAll();
+        model.addAttribute("allEmployees", employees);
 
         Project proj = new Project();
         model.addAttribute("project", proj);

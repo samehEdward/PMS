@@ -15,9 +15,12 @@ public class Employee {
     private String LastName;
     private String email;
 
-    @ManyToOne
+    @ManyToOne(cascade ={CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST }
+    , fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
     private Project theProject;
+
+
 
     public Project getTheProject() {
         return theProject;
@@ -35,6 +38,8 @@ public class Employee {
         LastName = lastName;
         this.email = email;
     }
+
+
 
     public long getEmpID() {
         return empID;

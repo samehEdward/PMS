@@ -16,13 +16,13 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-    EmployeeRepository emp;
+    EmployeeRepository empl;
 
 
     @GetMapping
     public String displayEmployees(Model model)
     {
-        List<Employee> empls = emp.findAll();
+        List<Employee> empls = empl.findAll();
         model.addAttribute("emplList", empls);
         return "employees/list-employees";
     }
@@ -40,7 +40,7 @@ public class EmployeeController {
     @PostMapping("/save")
     public String createEmployee(Employee empo, Model model)
     {
-        emp.save(empo);
-        return "redirect:/employee/new";
+        empl.save(empo);
+        return "redirect:/employees/new";
     }
 }

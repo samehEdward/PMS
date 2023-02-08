@@ -30,6 +30,14 @@ public class Project {
         this.description = description;
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     public long getProjectId() {
         return projectId;
     }
