@@ -28,7 +28,7 @@ public class ProjectContoller
     public String displayEmployees(Model model)
     {
         List<Project> pojs = proRepo.findAll();
-        model.addAttribute("emplList", pojs);
+        model.addAttribute("prosList", pojs);
         return "projects/list-projects";
     }
 
