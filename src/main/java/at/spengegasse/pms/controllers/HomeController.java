@@ -17,12 +17,12 @@ public class HomeController {
     @Autowired
     ProjectRepository repos;
 
-    @GetMapping("/n")
+    @GetMapping("/m")
     public String displayHome(Model model)
     {
      List<Project> projects =  repos.findAll();
      model.addAttribute("prosList", projects);
-        return "home";
+        return "main/home";
     }
 
     @Autowired

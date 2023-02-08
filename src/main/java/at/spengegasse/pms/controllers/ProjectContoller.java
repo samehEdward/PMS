@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -46,9 +47,16 @@ public class ProjectContoller
    }
 
    @PostMapping("/save")
-    public String createProject(Project project, Model model){
+    public String createProject(Project project,@RequestParam List<Long> employees, Model model){
     // this should handel saving to the Database
        proRepo.save(project);
+
+       Iterable<Employee> chosenEmployees = empRepo.findAllById(employees);
+        for(Employee emp : chosenEmployees) {
+            emp.setTheProject(project);
+            empRepo.save(emp);
+        }
+
         return "redirect:/projects/new";
     }
 
