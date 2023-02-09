@@ -47,17 +47,17 @@ public class ProjectContoller
    }
 
    @PostMapping("/save")
-    public String createProject(Project project,@RequestParam List<Long> employees, Model model){
+    public String createProject(Project project, Model model){
     // this should handel saving to the Database
        proRepo.save(project);
 
-       Iterable<Employee> chosenEmployees = empRepo.findAllById(employees);
-        for(Employee emp : chosenEmployees) {
-            emp.setTheProject(project);
-            empRepo.save(emp);
-        }
+     //  Iterable<Employee> chosenEmployees = empRepo.findAllById(employees);
+       //  for(Employee emp : chosenEmployees) {
+     //       emp.setTheProject(project);
+     //       empRepo.save(emp);
+     //   }
 
-        return "redirect:/projects/new";
+        return "redirect:/projects";
     }
 
 }

@@ -1,9 +1,7 @@
 package at.spengegasse.pms.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+
 
 import java.util.List;
 
@@ -19,7 +17,9 @@ public class Project {
     private String stage; // NOTSTARTED, COMPLETED, INPROGRESS
     private String description;
 
-    @OneToMany(mappedBy = "theProject")
+    @ManyToMany(cascade ={CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST }
+            , fetch = FetchType.LAZY)
+
     private List<Employee> employees;
     public Project() {
     }
@@ -29,6 +29,8 @@ public class Project {
         this.stage = stage;
         this.description = description;
     }
+    @JoinTable(name = "project_employee", joinColumns = @JoinColumn(name = "project_id"),
+    inverseJoinColumns = @JoinColumn(name = "employee_id"))
 
     public List<Employee> getEmployees() {
         return employees;

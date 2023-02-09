@@ -3,6 +3,8 @@ package at.spengegasse.pms.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 
 @Entity
 public class Employee {
@@ -15,20 +17,12 @@ public class Employee {
     private String LastName;
     private String email;
 
-    @ManyToOne(cascade ={CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST }
+    @ManyToMany(cascade ={CascadeType.DETACH, CascadeType.MERGE,CascadeType.REFRESH,CascadeType.PERSIST }
     , fetch = FetchType.LAZY)
-    @JoinColumn(name = "project_id")
-    private Project theProject;
 
-
-
-    public Project getTheProject() {
-        return theProject;
-    }
-
-    public void setTheProject(Project theProject) {
-        this.theProject = theProject;
-    }
+    @JoinTable(name = "project_employee", joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "project_id"))
+    private List<Project> theProject;
 
     public Employee() {
     }
@@ -40,6 +34,13 @@ public class Employee {
     }
 
 
+    public List<Project> getTheProject() {
+        return theProject;
+    }
+
+    public void setTheProject(List<Project> theProject) {
+        this.theProject = theProject;
+    }
 
     public long getEmpID() {
         return empID;
