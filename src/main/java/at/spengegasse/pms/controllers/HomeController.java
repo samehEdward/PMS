@@ -15,24 +15,29 @@ import java.util.List;
 public class HomeController {
 
     @Autowired
+    EmployeeRepository empl;
+    @Autowired
     ProjectRepository repos;
 
-    @GetMapping("/m")
+    @GetMapping("/")
     public String displayHome(Model model)
     {
      List<Project> projects =  repos.findAll();
      model.addAttribute("prosList", projects);
+
+        List<Employee> employees = empl.findAll();
+        model.addAttribute("empoList", employees);
+
         return "main/home";
     }
 
-    @Autowired
-    EmployeeRepository empl;
 
-    @GetMapping("/")
-    public String displayEmployee(Model model)
-    {
-    List<Employee> employees = empl.findAll();
-    model.addAttribute("empoList", employees);
-        return "main/home";
-    }
+
+  //  @GetMapping("/")
+  //  public String displayEmployee(Model model)
+  //  {
+  //  List<Employee> employees = empl.findAll();
+   // model.addAttribute("empoList", employees);
+    //    return "main/home";
+   // }
 }
